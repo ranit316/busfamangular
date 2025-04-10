@@ -1,0 +1,60 @@
+<footer>
+    <div class="container p-0">
+        <div class="row g-0">
+            <div class="col-lg-5 col-md-12">
+                <div class="footer_about card h-100" *ngIf="data">
+                    <h3>About Us</h3>
+                    <div [innerHTML]="aboutUsContent"></div>
+                    <div *ngIf="data?.social">
+                        <div class="social_icons">
+                            <a *ngFor="let name of data.social.social_name; let i = index" target="_blank"
+                                [href]="data.social.social_url[i] || ''">
+                                <i [class]="data.social.social_class[i] || ''"
+                                    [attr.style]="'color: ' + data.social.social_color[i] + ' !important;'"
+                                    [title]="name"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <br>
+                    <div [innerHTML]="academyBusfam"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="footer_contact card h-100">
+                    <h3>Contact</h3>
+                    <ul>
+                        @for (address of data?.address; track $index) {
+                        <li>
+                            <i class="fas-sharp fa-solid fa-location-dot"></i>
+                            <div [innerHTML]="address"></div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="useful_col card h-100">
+                    <h3>Useful Links</h3>
+                    <div class="quick_links">
+                        <a href="">FAQ</a>
+                        <a href="">Clientele</a>
+                        <a href="" style="color:#18beb4">Log In</a>
+                    </div>
+                    <div class="review_section">
+                        <i class="fa-solid fa-caret-right"></i>
+                        <strong> Read Reviews to Know Us More</strong>
+                        <ul>
+                            <li *ngFor="let reviews of data?.review_image; let i = index">
+                                <a [href]="data?.review.review_link[i]"
+                                    target="_blank">
+                                    <img [src]="reviews" alt=""
+                                        class="img-fluid">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
