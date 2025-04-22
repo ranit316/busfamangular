@@ -1,0 +1,10 @@
+// './js/jquery.fancybox.min.js';
+// './js/jquery.inputmask.bundle.min.js';
+// './js/jquery.matchHeight-min.js';
+// './js/owl.carousel.js';
+// './js/stellarnav.js';
+// './js/waitMe.min.js';
+'./js/custom.js';
+// './js/scrolltofixed-min.js';
+// './js/jquery-ui.min.js';
+// './js/wow.min.js';

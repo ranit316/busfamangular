@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { SettingsService } from '../../../services/setting/settings.service';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
@@ -14,11 +15,45 @@ import { SettingsService } from '../../../services/setting/settings.service';
 export class FrontendComponent {
   data: any;
   logo: any;
-  constructor(private settingApi: SettingsService) { }
+
+
+
+
+  constructor(private settingApi: SettingsService, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
+    this.loadFrontendAsset();
     this.getData();
   }
+
+  loadFrontendAsset() {
+    this.loadStyle('css/frontend.css');
+    // this.loadScript('js/frontend.js');
+  }
+
+  loadStyle(url: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      if (!document.querySelector(`link[href="${url}"]`)) {
+        const link = document.createElement('link');
+        link.href = url;
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+      }
+    }
+  }
+
+  loadScript(url: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      if (!document.querySelector(`script[src="${url}"]`)) {
+        const script = document.createElement('script');
+        script.src = url;
+        script.async = false;
+        script.defer = true;
+        document.body.appendChild(script);
+      }
+    }
+  }
+
 
   getData() {
     this.settingApi.settingsApi().subscribe({

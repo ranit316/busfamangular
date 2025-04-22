@@ -1,0 +1,45 @@
+<div class="intro-bg">
+    <div class="auth-container">
+        <div class="card">
+
+            <div class="auth-content">
+                <div class="auth-header">
+                    <img src="admin/images/login_logo.webp" alt="" class="img-fluid">
+                </div>
+                <h5>Hello! let's get started</h5>
+                <p>Login to continue.</p>
+
+                <form method="post" action="#" id="introForm" class="formular">
+                    <div class="mb-3">
+                        <!-- <label for="username" class="form-label">Username</label> -->
+                        <input type="text" class="form-control" placeholder="Username" name="user_name" id="user_name">
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <!-- <label for="password" class="form-label">Password</label> -->
+                            <input [type]="showPassword ? 'text' : 'password'" class="form-control"
+                                placeholder="Password" id="password-1" name="password" [(ngModel)]="password">
+                            <button type="button" (click)="togglePassword()"
+                                class="btn btn-sm position-absolute top-50 end-0 translate-middle-y me-2"
+                                style="background: none; border: none;">
+                                <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input class="form-check-input" id="remember" type="checkbox">
+                        <label for="remember">Remember me</label>
+                        <a href="#" class="forgot-btn float-end">Forgot password?</a>
+                    </div>
+                    <div class="mb-3 text-center"> <a href="" type="submit" class="btn btn-block btn-primary">Login</a>
+                    </div>
+
+                    <div class="mb-3 text-center">
+                        Need an Account? <a href="">Sign Up</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
