@@ -9,21 +9,32 @@
                 <h5>Hello! let's get started</h5>
                 <p>Login to continue.</p>
 
-                <form method="post" action="#" id="introForm" class="formular">
+                <form #form="ngForm" class="formular">
                     <div class="mb-3">
                         <!-- <label for="username" class="form-label">Username</label> -->
-                        <input type="text" class="form-control" placeholder="Username" name="user_name" id="user_name">
+                        <input type="text" class="form-control" placeholder="Username" name="email" required
+                            #email="ngModel" [(ngModel)]="loginObj.email">
+                        <div class="text-danger">
+                            @if(email.errors?.['required'] && email.touched) {
+                            <span>This is required</span>
+                            }
+                        </div>
                     </div>
                     <div class="mb-3">
                         <div class="input-group">
                             <!-- <label for="password" class="form-label">Password</label> -->
                             <input [type]="showPassword ? 'text' : 'password'" class="form-control"
-                                placeholder="Password" id="password-1" name="password" [(ngModel)]="password">
-                            <button type="button" (click)="togglePassword()"
-                                class="btn btn-sm end-0 me-2"
+                                placeholder="Password" name="password" required #password="ngModel"
+                                [(ngModel)]="loginObj.password">
+                            <button type="button" (click)="togglePassword()" class="btn btn-sm end-0 me-2"
                                 style="background: none; border: none;">
                                 <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                             </button>
+                        </div>
+                        <div class="text-danger">
+                            @if(password.errors?.['required'] && password.touched) {
+                            <span>This is required</span>
+                            }
                         </div>
                     </div>
                     <div class="mb-3 form-check">
@@ -31,7 +42,9 @@
                         <label for="remember">Remember me</label>
                         <a href="#" class="forgot-btn float-end">Forgot password?</a>
                     </div>
-                    <div class="mb-3 text-center"> <a href="" type="submit" class="btn btn-block btn-primary">Login</a>
+                    <div class="mb-3 text-center">
+                        <button type="button" class="btn btn-block btn-primary" [disabled]="form.invalid"
+                            (click)="onLogin()">Login</button>
                     </div>
 
                     <div class="mb-3 text-center">
