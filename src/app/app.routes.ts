@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './layouts/admin/layout/layout.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
+import { BannerComponent } from './admin/banner/banner.component';
 
 export const routes: Routes = [
     // frontend
@@ -29,7 +30,8 @@ export const routes: Routes = [
         component: AdminComponent,
         canActivate: [AuthGuard],
         children: [
-            {path: '', component: DashboardComponent}
+            {path: '', component: DashboardComponent},
+            {path: 'banner', component: BannerComponent}
         ]
     }
 ];
