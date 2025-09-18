@@ -8,6 +8,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { BannerComponent } from './admin/banner/banner.component';
 import { AddBannerComponent } from './admin/add-banner/add-banner.component';
+import { AboutusComponent } from './frontend/aboutus/aboutus.component';
 
 export const routes: Routes = [
     // frontend
@@ -15,7 +16,8 @@ export const routes: Routes = [
         path: '',
         component: FrontendComponent,
         children: [
-            {path: '', component: HomeComponent}
+            {path: '', component: HomeComponent},
+            {path: 'about', component: AboutusComponent}
         ]
     },
 
