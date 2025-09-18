@@ -1,7 +1,7 @@
 <!--start  Sidebar for desktop and tablet mobile-->
 <ul class="navbar-nav sidebar sidebar-dark accordion desktop-sidebar" id="accordionSidebar">
 
-    <a class="sidebar-brand d-flex align-items-center justify-content-sm-start" href="index.php">
+    <a class="sidebar-brand d-flex align-items-center justify-content-sm-start" routerLink="admin">
         <div class="sidebar-brand-icon rotate-n-15">
             <!-- <i class="fas fa-laugh-wink"></i> -->
             <img src="img/logo-icon.webp" alt="" class="img-fluid">
@@ -17,19 +17,19 @@
 
     <!-- links for desktop -->
     <div class="desktop_sidebar_links">
-        <li class="nav-item active">
-            <a class="nav-link" href="index.php">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" routerLink="/admin">
                 <i class="fa-solid fa-house"></i>
                 <span>Dashboard</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="media-list.php">
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/admin/banner">
                 <i class="fa-regular fa-circle-play"></i>
-                <span>Media</span></a>
+                <span>Banner</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="item-list.php" data-bs-toggle="collapse" data-bs-target="#c1"
+            <a class="nav-link" href="" data-bs-toggle="collapse" data-bs-target="#c1"
                 aria-expanded="false" aria-controls="c1">
                 <i class="fa-solid fa-user-gear"></i>
                 <span>Item Manager</span>

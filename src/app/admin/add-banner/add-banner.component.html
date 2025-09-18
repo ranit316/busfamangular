@@ -1,0 +1,62 @@
+<div class="page-content container">
+    <div class="wrapper">
+        <div class="row align-items-center mb-3">
+            <div class="col-md-9 col-7">
+                <div class="page-header">
+                    <h3>Add Banner</h3>
+                </div>
+            </div>
+            <div class="col-md-3 col-5">
+                <!-- Optional content -->
+            </div>
+        </div>
+
+        <!-- ✅ Wrap the row inside the form -->
+        <form #form="ngForm">
+            <div class="row g-2">
+                <!-- Left side form -->
+                <div class="col-md-6 col-lg-8">
+                    <div class="item_name">
+                        <div class="whitebox mb-4">
+                            <label>Banner Content</label>
+                            <input type="text" class="form-control" name="content" id="content" #content="ngModel" [(ngModel)]="bannerObj.content">
+
+                            <div class="mb-4">
+                                <label>Position</label>
+                                <input type="number" class="form-control" name="short" id="short" #short="ngModel" [(ngModel)]="bannerObj.short">
+                            </div>
+
+                            <div class="mb-4">
+                                <label>Upload Image</label>
+                                <input type="file" class="form-control" (change)="onImageSelected($event)">
+                            </div>
+
+                            <div class="mb-4" *ngIf="imagePreview">
+                                <label>Image Preview</label><br>
+                                <img [src]="imagePreview" alt="Preview" width="200" class="mt-2 border">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side controls -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="additem">
+                        <h3>Publish</h3>
+                        <div class="additem_body">
+                            <div class="mb-3">
+                                <select class="form-select" aria-label="Default select example" name="status" #status="ngModel" [(ngModel)]="bannerObj.status">
+                                    <option selected>Status:</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" (click)="onSubmit()">Publish</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
